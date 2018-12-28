@@ -29,6 +29,12 @@ Vue.use(DataTabulator)
 }
 ```
 
+CSS - optional basic styling to get you started.
+See also: "table-class" prop
+```
+<style src="vue-data-tabulator/dist/vue-data-tabulator.css"></style>
+```
+
 In template:
 ```
 <data-tabulator
