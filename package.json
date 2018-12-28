@@ -1,11 +1,11 @@
 {
-  "name": "data-tabulator",
+  "name": "vue-data-tabulator",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "build-bundle": "vue-cli-service build --target lib --name data-tabulator ./src/main.js",
+    "build-bundle": "vue-cli-service build --target lib --name vue-data-tabulator ./src/main.js",
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
@@ -20,7 +20,7 @@
     "eslint-plugin-vue": "^5.0.0-0",
     "vue-template-compiler": "^2.5.17"
   },
-  "main": "./dist/data-tabulator.common.js",
+  "main": "./dist/vue-data-tabulator.common.js",
   "files": [
     "dist/*",
     "src/*",
