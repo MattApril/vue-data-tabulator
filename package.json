@@ -1,7 +1,14 @@
 {
   "name": "vue-data-tabulator",
-  "version": "0.1.0",
+  "author": "Matthew April",
+  "description": "Light weight data tables component for Vue 2",
+  "version": "0.2.0",
+  "homepage": "https://github.com/MattApril/vue-data-tabulator#readme",
   "private": false,
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MattApril/vue-data-tabulator"
+  },
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -28,6 +35,15 @@
     "*.json",
     "*.js"
   ],
+  "keywords": [
+    "vue",
+    "vue2",
+    "data",
+    "tables",
+    "tabulator",
+    "sortable",
+    "sort"
+  ],
   "eslintConfig": {
     "root": true,
     "env": {
@@ -51,5 +67,8 @@
     "> 1%",
     "last 2 versions",
     "not ie <= 8"
-  ]
+  ],
+  "bugs": {
+    "url": "https://github.com/MattApril/vue-data-tabulator/issues"
+  }
 }
