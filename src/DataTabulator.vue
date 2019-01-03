@@ -2,7 +2,6 @@
     <table :class="tableClass">
         <thead>
         <tr>
-            <!-- TODO: needs slot to customize heading..? would be useful for any stacked headings we might want to apply -->
             <th v-for="heading in reportHeadings" :class="getHeadingClasses(heading)" @click="sortBy(heading)">
                 {{heading}}
             </th>
@@ -47,9 +46,10 @@
                     return [];
                 },
             },
-            tableClass: {
+            defaultSortColumn: {
+                type: String,
                 required: false,
-                default: 'table'
+                default: null
             },
             defaultSorter: {
                 type: Function,
@@ -76,7 +76,11 @@
                 default: function(){
                     return {};
                 }
-            }
+            },
+            tableClass: {
+                required: false,
+                default: 'table'
+            },
         },
 
         data: function(){
@@ -95,8 +99,11 @@
         },
 
         created: function() {
-            this.reportData = this.data;
+            this.setInternalReportData( this.data );
             this.syncHeadings();
+            if( this.defaultSortColumn ) {
+                this.sortBy( this.defaultSortColumn );
+            }
         },
 
         watch: {
@@ -106,8 +113,12 @@
                 if( !this.isCustomLayout ) {
                     this.reportHeadings = this.getHeadingsFromData( data );
                 }
-                // TODO: if new data is loaded we should sort it the same way old data was sorted.
-                this.reportData = this.data;
+                this.setInternalReportData( this.data );
+
+                // make sure new data is sorted the same way old data was.
+                if( this.currentSortColumn ) {
+                    this.sortBy(this.currentSortColumn);
+                }
             },
 
             columnOverride: function() {
@@ -116,6 +127,14 @@
         },
 
         methods: {
+
+            /**
+             * Creates shallow copy of data and sets as report data
+             * This is important to sort data without modifying the data prop directly.
+             */
+            setInternalReportData: function( data ) {
+                this.reportData = data.slice(0);
+            },
 
             /**
              * Synchronize headings with current data/columnOverride props
@@ -154,7 +173,7 @@
              * @return string
              */
             keyToHeading: function( key ) {
-                // TODO: replace underscores for spaces
+                // TODO: replace underscores for spaces?
                 // capitalize..
                 // NOTE: always keep headingToKey updated if modifying
                 return key.charAt(0).toUpperCase() + key.slice(1)
@@ -267,7 +286,6 @@
              * @param column string text name of the column to sort by
              */
             sortBy: function( column ) {
-
                 if( !this.isSortable(column) ) return;
 
                 if( column == this.currentSortColumn ) {
