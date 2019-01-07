@@ -396,6 +396,7 @@
         content: "\2195";
         position: absolute;
         left: 2px;
+        top: 0;
         color: #AAA;
     }
 
