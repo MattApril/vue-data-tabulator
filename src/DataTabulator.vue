@@ -117,7 +117,7 @@
 
                 // make sure new data is sorted the same way old data was.
                 if( this.currentSortColumn ) {
-                    this.sortBy(this.currentSortColumn);
+                    this.sortBy(this.currentSortColumn, this.currentSortDirection);
                 }
             },
 
@@ -284,18 +284,23 @@
             /**
              * Sorts the data by a given column.
              * @param column string text name of the column to sort by
+             * @param dir 1 or -1
              */
-            sortBy: function( column ) {
+            sortBy: function( column, dir ) {
                 if( !this.isSortable(column) ) return;
 
-                if( column == this.currentSortColumn ) {
-                    // if we are re-sorting the same column that we already sorted by then reverse the direction
+                // determine sort direction
+                if( typeof dir === 'undefined' && column == this.currentSortColumn) {
+                    // if we are re-sorting the same column that we already sorted by, and no direction was specified
+                    // reverse the direction
                     this.currentSortDirection *= -1;
                 } else {
-                    // otherwise set the current sort column and reset the direction to the default value
-                    this.currentSortColumn = column;
+                    // otherwise reset the direction to the default value
                     this.currentSortDirection = 1;
                 }
+
+                // track which column we are currently sorting by
+                this.currentSortColumn = column;
 
                 // need to map column name back to the underlying property
                 var underlyingProp = this.getUnderlyingHeadingProperty( column );
