@@ -374,9 +374,9 @@
                 if( this.currentSortColumn == heading ) {
                     classes.push('sorted');
                     if( this.currentSortDirection == -1 ) {
-                        classes.push('asc');
-                    } else {
                         classes.push('desc');
+                    } else {
+                        classes.push('asc');
                     }
                 }
                 return classes;
