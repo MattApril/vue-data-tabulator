@@ -2,7 +2,7 @@
   "name": "vue-data-tabulator",
   "author": "Matthew April",
   "description": "Light weight data tables component for Vue2 & Vue3",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "homepage": "https://github.com/MattApril/vue-data-tabulator#readme",
   "private": false,
   "repository": {
