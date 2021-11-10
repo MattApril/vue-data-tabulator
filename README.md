@@ -11,8 +11,13 @@ Note that only minimal CSS is provided at the moment. You will want to provide y
 
 ## Installation
 #### Via NPM
+**Vue 3**
 ```
 npm install vue-data-tabulator
+```
+**Vue 2**
+```
+npm install vue-data-tabulator@^0.2.4
 ```
 
 #### Direct script usage
@@ -24,13 +29,15 @@ npm install vue-data-tabulator
 
 
 #### Adding the component to your project
+Global install
 ```
 import DataTabulator from 'vue-data-tabulator'
-
-// global install
 Vue.use(DataTabulator)
+```
 
-// or inside another component:
+Options API:
+```
+import { DataTabulator } from 'vue-data-tabulator'
 {
     component: {DataTabulator}
 }

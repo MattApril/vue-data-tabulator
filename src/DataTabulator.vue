@@ -2,14 +2,14 @@
     <table :class="tableClass">
         <thead>
         <tr>
-            <th v-for="heading in reportHeadings" :class="getHeadingClasses(heading)" @click="sortBy(heading)">
+            <th v-for="heading in reportHeadings" :key="heading" :class="getHeadingClasses(heading)" @click="sortBy(heading)">
                 {{heading}}
             </th>
         </tr>
         </thead>
         <tbody>
-        <tr v-for="row in reportData">
-            <td v-for="(value, colName) in getMappedRow(row)" :class="[textToCssClass(colName), colName == currentSortColumn ? 'sorted' : '']">
+        <tr v-for="(row, index) in reportData" :key="rowPrimaryKey ? row[rowPrimaryKey] : index">
+            <td v-for="(value, colName) in getMappedRow(row)" :key="colName" :class="[textToCssClass(colName), colName == currentSortColumn ? 'sorted' : '']">
                 <slot :name="colName" :default-value="value" :row="row">
                     {{value}}
                 </slot>
@@ -81,6 +81,11 @@
                 required: false,
                 default: 'table'
             },
+            rowPrimaryKey: {
+                type: String,
+                required: false,
+                default: null
+            }
         },
 
         data: function(){
@@ -197,7 +202,8 @@
             applyOverrideToRecord: function(rawRecord, columnMap) {
                 var mappedRecord = {};
                 for (var colName in columnMap) {
-                    if (columnMap.hasOwnProperty(colName)) {
+
+                    if (Object.prototype.hasOwnProperty.call(columnMap, colName)) {
                         // this is the value the user has defined for this column
                         // typically this will be a string value that maps to a property in the row record (dot notation supported)
                         var mappedProperty = columnMap[colName];

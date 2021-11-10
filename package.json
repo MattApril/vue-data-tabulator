@@ -1,8 +1,8 @@
 {
   "name": "vue-data-tabulator",
   "author": "Matthew April",
-  "description": "Light weight data tables component for Vue 2",
-  "version": "0.2.4",
+  "description": "Light weight data tables component for Vue2 & Vue3",
+  "version": "1.0.0",
   "homepage": "https://github.com/MattApril/vue-data-tabulator#readme",
   "private": false,
   "repository": {
@@ -16,16 +16,15 @@
     "lint": "vue-cli-service lint"
   },
   "dependencies": {
-    "vue": "^2.5.17"
+    "vue": "^3.0.0"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "^3.2.0",
-    "@vue/cli-plugin-eslint": "^3.2.0",
-    "@vue/cli-service": "^3.2.0",
-    "babel-eslint": "^10.0.1",
-    "eslint": "^5.8.0",
-    "eslint-plugin-vue": "^5.0.0-0",
-    "vue-template-compiler": "^2.5.17"
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
+    "babel-eslint": "^10.1.0",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^7.0.0"
   },
   "main": "./dist/vue-data-tabulator.common.js",
   "files": [
@@ -36,7 +35,8 @@
     "*.js"
   ],
   "keywords": [
-    "vue",
+    "vue2",
+    "vue3",
     "data",
     "table",
     "tabulator",
