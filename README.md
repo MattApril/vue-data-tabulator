@@ -1,5 +1,5 @@
 # data-tabulator
-This is a light weight and customizable data table component for Vue2 projects. Primary Features:
+This is a light weight and customizable data table component for Vue2 and Vue3 projects. Primary Features:
 
 * Renders data sets as html table
 * Easily supports nested data structures with dot-notation
