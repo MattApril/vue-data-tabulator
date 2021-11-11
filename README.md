@@ -20,14 +20,6 @@ npm install vue-data-tabulator
 npm install vue-data-tabulator@^0.2.4
 ```
 
-#### Direct script usage
-```
-<script src="https://unpkg.com/vue"></script>
-<!-- comes after Vue -->
-<script src="https://unpkg.com/vue-data-tabulator"></script>
-```
-
-
 #### Adding the component to your project
 Global install
 ```
@@ -80,7 +72,7 @@ So slot="Is_cool" (not is_cool). More on this below..
 <data-tabulator
     :data="myData">
     
-    <template slot="Is_cool" slot-scope="{row}">
+    <template v-slot:Is_cool="{row}">
         {{row.is_cool ? 'Awe Ye' : 'Heck Naw'}}    
     </template>
     
@@ -108,13 +100,16 @@ Now each row in this column will display the first and last names.
     :column-override="columns">
     
     <!-- Here we define the data displayed in "Name" column -->
-    <template slot="Name" slot-scope="{row}">
+    <template v-slot:Name="{row}">
         {{row.first}} {{row.last}}    
     </template>
     
 </data-tabulator>
 ```
 
+_NOTE: since Vue 3 changed the syntax for slots, columns with spaces (and some other characters) can no longer be customized. Example: the column 'First Name' cannot be referenced as a slot using the new syntax:_
+
+```v-slot:First Name="{row}"``` is clearly invalid
 #### Nested data structures
 Data-tabulator also supports nested data structures. 
 This can be a very useful to avoid re-structuring your data just to display it. Lets run through an example:
