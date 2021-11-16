@@ -30,7 +30,10 @@ Vue.use(DataTabulator)
 Options API:
 ```
 import { DataTabulator } from 'vue-data-tabulator'
-{
+// OR, if you're using a bundler like Webpack then importing the SFC directly is more optimal:
+import DataTabulator from 'vue-data-tabulator/src/DataTabulator'
+
+export default {
     component: {DataTabulator}
 }
 ```
@@ -107,9 +110,9 @@ Now each row in this column will display the first and last names.
 </data-tabulator>
 ```
 
-_NOTE: since Vue 3 changed the syntax for slots, columns with spaces (and some other characters) can no longer be customized. Example: the column 'First Name' cannot be referenced as a slot using the new syntax:_
+_NOTE: since Vue 3 changed the syntax for slots, columns with spaces (and some other characters) required dynamic slots to be customized.
+```v-slot:[variableName]="{row}"```
 
-```v-slot:First Name="{row}"``` is clearly invalid
 #### Nested data structures
 Data-tabulator also supports nested data structures. 
 This can be a very useful to avoid re-structuring your data just to display it. Lets run through an example:
