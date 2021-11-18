@@ -112,18 +112,21 @@
         },
 
         watch: {
-            data: function( data ) {
-                // if there is no column layout specified we need to generate the headings based on the given data,
-                // so make sure we update the headings if the data changes
-                if( !this.isCustomLayout ) {
-                    this.reportHeadings = this.getHeadingsFromData( data );
-                }
-                this.setInternalReportData( this.data );
+            data: {
+                handler: function( data ) {
+                    // if there is no column layout specified we need to generate the headings based on the given data,
+                    // so make sure we update the headings if the data changes
+                    if( !this.isCustomLayout ) {
+                        this.reportHeadings = this.getHeadingsFromData( data );
+                    }
+                    this.setInternalReportData( this.data );
 
-                // make sure new data is sorted the same way old data was.
-                if( this.currentSortColumn ) {
-                    this.sortBy(this.currentSortColumn, this.currentSortDirection);
-                }
+                    // make sure new data is sorted the same way old data was.
+                    if( this.currentSortColumn ) {
+                        this.sortBy(this.currentSortColumn, this.currentSortDirection);
+                    }
+                },
+                deep: true
             },
 
             columnOverride: function() {
